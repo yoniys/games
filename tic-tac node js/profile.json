@@ -1,0 +1,42 @@
+[
+    {
+        "name": "a",
+        "code": "a1",
+        "wins": 10
+    },
+    {
+        "name": "y",
+        "code": "y1",
+        "wins": 8
+    },
+    {
+        "name": "ad",
+        "code": "ad",
+        "wins": 0
+    },
+    {
+        "name": "w",
+        "code": "w1",
+        "wins": 0
+    },
+    {
+        "name": "d",
+        "code": "d1",
+        "wins": 0
+    },
+    {
+        "name": "c",
+        "code": "c1",
+        "wins": 0
+    },
+    {
+        "name": "",
+        "code": "",
+        "wins": 0
+    },
+    {
+        "name": "dd",
+        "code": "d2",
+        "wins": 0
+    }
+]
