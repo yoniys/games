@@ -1,0 +1,12 @@
+#tic-tac{
+   margin: auto;
+    margin-top: 150px;
+    width: 100px;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+/* #profile{} */

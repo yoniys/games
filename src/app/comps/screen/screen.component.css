@@ -1,0 +1,94 @@
+.container {
+    /* position: relative; */
+    text-align: center;
+    /* color: white; */
+  }
+  #bottom-left {
+    border-style: solid;
+    border-color: red;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    bottom: 62px;
+    left: 162px;
+  }
+ 
+  
+  #top-left {
+    border-style: solid;
+    border-color: green;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    top: 30px;
+    left: 160px;
+  }
+  
+  #top-right {
+    border-style: solid;
+    border-color: violet;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    top: 30px;
+    right: 160px;
+  }
+  
+  #bottom-right {
+    border-style: solid;
+    border-color: black;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    bottom: 62px;
+    right: 160px;
+  }
+  
+  #centered {
+    border-style: solid;
+    border-color: blue;
+    position: absolute;
+    width: 180px;
+    height:  110px;
+    top: 200px;
+    left: 450px;
+    transform: translate(-50%, -50%);
+  }
+  #bottom-centered{
+    border-style: solid;
+    border-color: blue;
+    position: absolute;
+    width: 180px;
+    height:  110px;
+    bottom: 10px;
+    left: 450px;
+    transform: translate(-50%, -50%);
+  }
+  #top-centered{
+    border-style: solid;
+    border-color: blue;
+    position: absolute;
+    width: 180px;
+    height:  110px;
+    top: 80px;
+    left: 450px;
+    transform: translate(-50%, -50%);
+  }
+  #centered-left{
+    border-style: solid;
+    border-color: green;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    top: 150px;
+    left: 160px;
+  }
+  #centered-right{
+    border-style: solid;
+    border-color: green;
+    position: absolute;
+    width: 170px;
+    height:  100px;
+    top: 150px;
+    right: 160px;
+  }

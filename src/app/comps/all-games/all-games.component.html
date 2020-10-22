@@ -1,0 +1,20 @@
+<div *ngIf="s.choose_game==''" > 
+    <div id="profile">
+        <h4>{{s.player_details.name}} you have {{s.player_details.wins}} wins</h4>
+    </div>
+
+    <div id="tic-tac">
+        <h5>0 wins</h5>
+
+        <button class="btn btn-black" (click)="choose('tic-tac')">tic tac</button>
+    </div>
+
+    <div id="tic-tac">
+        <h5>10 wins</h5>
+        <span *ngIf="s.player_details.wins<9" style='font-size:50px;'>&#10068;</span>
+        <button *ngIf="s.player_details.wins>9" class="btn btn-black" (click)="choose('tic-tac')">tic tac</button>
+    </div>
+</div>
+<div *ngIf="s.choose_game=='tic-tac'"> 
+<app-warper></app-warper>
+</div>
