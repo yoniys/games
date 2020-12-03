@@ -1,12 +1,28 @@
-#tic-tac{
-   margin: auto;
-    margin-top: 150px;
-    width: 100px;
+
+#warper{
+    display: flex;
+    flex-wrap: nowrap;
 }
+
+.tic-tac{margin-left: 100px;}
 
 .btn-black{
     background-color: #000 !important;
     color: #fff;
 }
-
-/* #profile{} */
+.img{margin-left: -40;}
+.word-color{text-align: center;
+    color: orange}
+#profile{
+    margin-bottom: 100px;
+    text-align: center;
+}
+#background{background-image: url('https://image.freepik.com/free-vector/abstract-violet-pixel-rain-background_23-2148362568.jpg');
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+    }

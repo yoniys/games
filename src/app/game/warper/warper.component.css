@@ -1,0 +1,11 @@
+:host {
+    text-align: center;
+  }
+  #background{background-image: url(../../../assets/img/puzzel2.jpg);
+    position: fixed;
+    top: 0; 
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;}
+    #center{margin-left:32% ;}

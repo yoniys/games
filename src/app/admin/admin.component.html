@@ -1,0 +1,57 @@
+<div *ngIf='visibul' >
+<input #code type="text">
+<button (click)=enterData(code.value)>get data</button>
+</div>
+
+
+
+
+
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">users</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
+                        aria-hidden="true"></i></a></span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                    <tr>
+
+                        <th class="text-center">name</th>
+                        <th class="text-center">code</th>
+                        <th class="text-center">wins</th>
+                        <th class="text-center">edit</th>
+                        <th class="text-center">delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsersData">
+
+                        <td class="pt-3-half" contenteditable="true">{{user.id}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{user.Name}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{user.password}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{user.wins}}</td>
+
+                        <td class="pt-3-half">
+                            <span class="table-up"><a class="indigo-text">edit<i class="fas fa-long-arrow-alt-up"
+                                        aria-hidden="true"></i></a></span>
+                            <span class="table-down"><a href="#!" class="indigo-text"><i
+                                        class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+                        </td>
+                        <td>
+                            <span class="table-remove">
+                                <button (click)=delete(user.id) type="button"
+                                    class="btn btn-danger btn-rounded btn-sm my-0">
+                                    deled
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a routerLink='/all-games'>
+    <button style="color: red;">return</button>
+</a>

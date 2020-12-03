@@ -1,0 +1,23 @@
+<div id="tetries" >
+    <div class="grid">
+        <canvas #board class="game-board"></canvas>
+        <div class="right-column">
+            <div>
+                <h1>TETRIS</h1>
+                <p>Score: {{ points }}</p>
+                <p>Lines: {{ lines }}</p>
+                <p>Level: {{ level }}</p>
+                <canvas #next class="next"></canvas>
+            </div>
+            <button (click)="play()" class="play-button">Play</button>
+            <a routerLink='/all-games'>
+                <button class="return-button">return</button>
+            </a>
+        </div>
+    </div>
+</div>
+<audio autoplay loop>
+
+    <source src="../../assets/audio/tetris.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>

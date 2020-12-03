@@ -5,29 +5,30 @@ import{HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ScreenComponent } from './comps/screen/screen.component';
-import { XOrOComponent } from './comps/x-or-o/x-or-o.component';
-import { WarperComponent } from './comps/warper/warper.component';
+
 import { LogInComponent } from './comps/log-in/log-in.component';
 import { AllGamesComponent } from './comps/all-games/all-games.component';
+import { BoardComponent } from './Board-game/board.component';
+import { MModule } from './game/m/m.module';
+import { AdminComponent } from './admin/admin.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [BoardComponent,
     AppComponent,
-    ScreenComponent,
-    XOrOComponent,
-    WarperComponent,
     LogInComponent,
     AllGamesComponent,
+    AdminComponent,
    
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

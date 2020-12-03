@@ -1,20 +1,45 @@
-<div *ngIf="s.choose_game==''" > 
-    <div id="profile">
-        <h4>{{s.player_details.name}} you have {{s.player_details.wins}} wins</h4>
+<div id="background" *ngIf="s.choose_game==''"
+    >
+    <div id="profile" *ngIf='s.player_details'>
+        <h4 class="word-color">{{s.player_details.Name}} you have {{s.player_details.wins}} wins</h4>
+        <a routerLink='/admin'><button *ngIf='s.player_details.Name=="admin"'>admin</button></a>
     </div>
+    <div id="warper">
+        <div class="tic-tac">
 
-    <div id="tic-tac">
-        <h5>0 wins</h5>
+            <h5 class="word-color">0 wins</h5>
+            <a routerLink='/game-bord'>
+                <!-- <button class="btn btn-black">game-bord</button> -->
+                <img class="img"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuJdMtL76uPW6UdqNclz3vkFWAQ6XrYsKefg&usqp=CAU"
+                    alt="">
+            </a>
+        </div>
 
-        <button class="btn btn-black" (click)="choose('tic-tac')">tic tac</button>
-    </div>
+        <div class="tic-tac" *ngIf='s.player_details'>
+            <h5 class="word-color">10 wins</h5>
+            <!-- <span  style='font-size:50px;'>&#10068;</span> -->
+            <img src="../../../assets/img/secret.jpg" alt="" *ngIf="s.player_details.wins<=9">
+            <div *ngIf="s.player_details.wins>9">
+                <a routerLink='/pazel-game' *ngIf='!s.first_time'>
+                    <img src="../../../assets/img/puzzle.jpg" alt="img">
+                </a>
+                <img *ngIf='s.first_time' src={{img}} alt="" (click)='first_time()'>
+            </div>
+        </div>
 
-    <div id="tic-tac">
-        <h5>10 wins</h5>
-        <span *ngIf="s.player_details.wins<9" style='font-size:50px;'>&#10068;</span>
-        <button *ngIf="s.player_details.wins>9" class="btn btn-black" (click)="choose('tic-tac')">tic tac</button>
+       
     </div>
 </div>
-<div *ngIf="s.choose_game=='tic-tac'"> 
-<app-warper></app-warper>
+<audio  autoplay loop>
+    
+    <source src="../../../assets/audio/main.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+<!-- <div style="background-color: black;height: 20px;width: 1349px;"></div> -->
+<!-- <div *ngIf="s.choose_game=='game-board'">
+    <game-board></game-board>
 </div>
+<div *ngIf="s.choose_game=='tic-tac'">
+    <a routerLink='/pazel-game'>in</a>
+</div> -->

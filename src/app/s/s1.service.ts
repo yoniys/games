@@ -7,32 +7,38 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class S1Service {
-  yourturn=false
+  first_time=false
+  yourturn = false
   activate = true
   profiles
   arr1
   isPaused = true
-  chose_x_or_o = ""
   player_details
-  choose_game=''
+  choose_game = ''
   constructor(public http: HttpClient) {
 
-    this.httpGet(`http://localhost:8080/tic-tac-data.json`)
-      .subscribe((result) => {
-        this.arr1 = result
-        console.log(this.arr1);
-        console.log(this.arr1[0].id);
-        // ?id=1
-        // ?playr
-      })
-    this.httpGet(`http://localhost:8080/profile.json`)
+  if(localStorage.length){
+    console.log(localStorage.length);
+   this.getUserData(localStorage.getItem('user'))
+   console.log(this.player_details);
+  }
+
+    this.httpGet(`http://localhost:3000/profils-co/findAll`)
       .subscribe((result) => {
         this.profiles = result
         console.log(this.profiles);
-        console.log(this.arr1[0].id);
-    
+        // console.log(this.arr1[0].id);
+
       })
 
+
+  }
+  updeate_wins(id, wins) {
+   this.http.put(`http://localhost:3000/profils-co/edit/${id}`, { wins: wins + 1 }).subscribe(()=>{
+    this.refreshP(id)
+    this.first_time=true
+   })
+    
 
   }
   // updeate(id) {
@@ -47,65 +53,77 @@ export class S1Service {
 
   // }
 
-  restart() {
-    this.httpGet(`http://localhost:8080/tic-tac-data.json?restart=true`)
-    .subscribe((result) => {
-      this.arr1 = result
-      console.log(this.arr1);
-      console.log(this.arr1[0].id);
-      console.log("restart working");
 
-    })
-    this.chose_x_or_o=""
-  }
-
-  refresh(){
+  refresh() {
     this.httpGet(`http://localhost:8080/profile.json`)
-    .subscribe((result) => {
-      this.profiles = result
-      console.log(this.profiles);
-      console.log(this.arr1[0].id);
-  
-    })
+      .subscribe((result) => {
+        this.profiles = result
+        console.log(this.profiles);
+        // console.log(this.arr1[0].id);
+
+      })
   }
 
-  newregister(name, p) {
-    this.httpGet(`http://localhost:8080/profile.json?name=${name}&code=${p}`)
-    .subscribe((result) => {
-      this.profiles = result
-      console.log(this.profiles);
-      console.log("updet profiles working");
+ 
+  refreshP(id) {
+    this.http.get(`http://localhost:3000/profils-co/findOne/${id}`)
+      .subscribe((result) => {
+        this.player_details = result
+        console.log(this.player_details);
+      })
+  }
+  public async newregister(name, p) {
+    await this.http.post('http://localhost:3000/profils-co/create',
+      { Name: name, password: p, wins: 0 }).subscribe((r) => {
+       this.player_details=r
+       console.log(this.player_details);
+       this.getToken(this.player_details.password)
 
-    })
+      })
+  }
+  getToken(password) {
+    localStorage.clear()
+    localStorage.setItem(`user`, password );
+   }
+   getTokenlogin(password) {
+     this.http.get('http://localhost:3000/profils-co/creattoken').subscribe((r)=>{
+       this.player_details.password=r
+      this.getToken(this.player_details.password)
+     })
+   
    }
 
-   check_turns(){
-     let o=0
-     let x=0
-    this.httpGet(`http://localhost:8080/tic-tac-data.json`)
-    .subscribe((result) => {
-      this.arr1 = result
-      console.log(this.arr1);
-      for(let turns of this.arr1){
-        if(turns.playr=="o"){o++}
-        if(turns.playr=="x"){x++}
-      }
-      console.log("o="+o);
-      console.log("x="+x);
-      
-      if(o>=x && this.chose_x_or_o=="x"){this.yourturn=true
-      console.log("o>x");
-      }
-      else if(o<x && this.chose_x_or_o=="o"){this.yourturn=true}
-    })
-   }
 
+ 
 
   httpGet(url: string): Observable<any> {
 
     return this.http.get(url)
   }
 
+
+  public async getUserData(password) {
+    console.log(password);
+    await this.http.get(`http://localhost:3000/profils-co/findOne/token/${password}`).subscribe((r) => {
+      console.log(r);
+      this.player_details = r
+      console.log(this.player_details.Name);
+      
+      
+    })
+  }
+  public async getUserDatalogin(password) {
+    console.log(password);
+    await this.http.get(`http://localhost:3000/profils-co/findOne/token/login/${password}`).subscribe((r) => {
+      console.log(r);
+      this.player_details = r
+      console.log(this.player_details.Name);
+      this.getToken(this.player_details.password)
+      
+      
+    })
+  }
+  
 
 
 
